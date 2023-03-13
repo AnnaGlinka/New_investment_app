@@ -8,6 +8,7 @@
   <link rel="stylesheet" 
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -206,6 +207,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#crypto">CRYPTO</a></li>
+        <li><a href="#exchange">EXCHANGE RATES</a></li>
         <li><a href="#services">SERVICES</a></li>
         <li><a href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#pricing">PRICING</a></li>
@@ -231,12 +233,10 @@
 <!-- Container (crypto Section) -->
 <div id="crypto" class="container-fluid">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <h2>CRYPTOCURRENCY PRICES</h2><br>
-         <div class="container">
-          <h3>Displaying the latest cryptocurrency prices from CoinMarketCap API in {{symbol}} </h3>
-          <br>
-          <br>
+          <h3>Displaying the latest cryptocurrency prices in {{currency_symbol}} </h3>
+             <br></br>
 
      <!-- table -->      
            <table class="table">
@@ -249,7 +249,7 @@
                 </tr>
               </thead>
               <tbody>
-                  {% for coin in currency_data %}
+                  {% for coin in crypto_data %}
                 <tr>
                   <td>{{coin[0]}}</td>
                   <td>{{coin[1]}}</td>
@@ -259,8 +259,6 @@
                   {% endfor %}
               </tbody>
             </table>
-             
-      </div>
     
         
       <br><button class="btn btn-default btn-lg">Get in Touch</button>
@@ -269,16 +267,38 @@
   </div>
 </div>
 
-<div class="container-fluid bg-grey">
+<div id="exchange"  class="container-fluid bg-grey">
   <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo slideanim"></span>
-    </div>
-    <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <div class="col-sm-12">
+      <h2>EXCHANGE RATES</h2><br>
+
+          
+          <br>
+          
+          <h1>Currency prices</h1>
+          <h3>Displaying the latest exchange rates $ to currency from CurrencyScoop API</h3>
+           <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Currency code</th>
+                  <th scope="col">Currency name</th>   
+                  <th scope="col">Exchange Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for key, value in currency_data.items() %}
+                <tr>
+                  <td>{{value[0]}}</td>
+                  <td>{{key}}</td>
+                  <td><b>$</b>{{value[1]}}</td>
+                
+                </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+             
+     
     </div>
   </div>
 </div>
