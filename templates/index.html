@@ -273,11 +273,7 @@
     <div class="col-sm-12">
       <h2>EXCHANGE RATES</h2><br>
 
-          
-          <br>
-          
-          <h1>Currency prices</h1>
-          <h3>Displaying the latest exchange rates $ to currency from CurrencyScoop API</h3>
+          <h3>Displaying the latest exchange rates: base USD</h3>
            <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -289,9 +285,9 @@
               <tbody>
                   {% for key, value in currency_data.items() %}
                 <tr>
-                  <td>{{value[0]}}</td>
                   <td>{{key}}</td>
-                  <td><b>$</b>{{value[1]}}</td>
+                  <td>{{value[1]['description']}}</td>
+                  <td><b>$</b>{{value[0]}}</td>
                 
                 </tr>
                   {% endfor %}

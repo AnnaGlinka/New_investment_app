@@ -11,7 +11,7 @@ def index():
     get cryptocurrency part
     """
     cc = Cryptocurrency()
-    crypto_data = cc.get_n_top_currency(10)
+    crypto_data = cc.get_n_top_currency(20)
     currency_symbol = "$"
     """
     get currency exchange rates part

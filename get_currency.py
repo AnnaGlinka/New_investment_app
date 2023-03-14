@@ -11,11 +11,12 @@ class RealCurrency:
 
     def get_currencies_exchange_rates(self):
         url = "https://api.exchangerate.host/latest"
+        params_arg = {'base': 'USD'}
 
         session = Session()
 
         try:
-            response = session.get(url)
+            response = session.get(url, params=params_arg)
             exchange_data = json.loads(response.text)
             #print(exchange_data['rates'])
             return exchange_data['rates']
@@ -52,9 +53,15 @@ class RealCurrency:
         """
         combined_data = self.combine_dict(exchange_rates, curr_data)
         sorted_curr_data = dict(sorted(combined_data.items()))
-      
 
-        return sorted_curr_data
+        cleaned_sorted_curr_data = {}
+
+        for key, val in sorted_curr_data.items():
+            if type(val[0]) is dict:
+                continue
+            cleaned_sorted_curr_data.update({key: val})
+                
+        return  cleaned_sorted_curr_data
 
 
 rc = RealCurrency()
