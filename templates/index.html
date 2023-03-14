@@ -261,9 +261,22 @@
             </table>
     
         
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
-    </div>
-    
+   <!-- dropdown --> 
+        <form class="form-inline" method="POST" action="{{ url_for('index') }}">
+      <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">Please select</span>
+                <select name="currency_symbol" class="selectpicker form-control">
+                  {% for key, value in currency_data.items() %}
+                  <option value="{{key}}">{{key}}</option>
+                  {% endfor %}
+                </select>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </form>
+    <br>
+    <br>
   </div>
 </div>
 

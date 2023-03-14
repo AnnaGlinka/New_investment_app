@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from get_cryptocurr import Cryptocurrency
 from get_currency import RealCurrency
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     """
     get cryptocurrency part
@@ -22,10 +22,15 @@ def index():
     curr_data = rc.get_currencies_list()
     currency_data = rc.merge_data(exchage_rates, curr_data)
 
+    selected_currency_symbol = 'AED'
+
+    selected_currency_symbol = request.form.get('currency_symbol')
 
 
-    
-    return render_template('index.html', crypto_data=crypto_data, currency_symbol=currency_symbol, currency_data=currency_data)
+    return render_template('index.html',
+                           crypto_data=crypto_data,
+                           currency_symbol=selected_currency_symbol,
+                           currency_data=currency_data)
 
 
 if __name__ == "__main__":
