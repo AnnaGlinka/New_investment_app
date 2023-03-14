@@ -26,7 +26,12 @@ def index():
     get user input
     """
     selected_currency_symbol = request.form.get('currency_symbol')
-    currency_exchange_rate = currency_data[selected_currency_symbol][0]
+    currency_exchange_rate = 1
+    
+    if selected_currency_symbol == None:
+        currency_exchange_rate = 1
+    else:    
+        currency_exchange_rate = currency_data[selected_currency_symbol][0]
 
     """
     recalculated cryptocurrency prices
