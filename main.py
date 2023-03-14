@@ -12,7 +12,7 @@ def index():
     """
     cc = Cryptocurrency()
     crypto_data = cc.get_n_top_currency(20)
-    currency_symbol = "$"
+
     """
     get currency exchange rates part
     """
@@ -22,8 +22,18 @@ def index():
     curr_data = rc.get_currencies_list()
     currency_data = rc.merge_data(exchage_rates, curr_data)
 
-
+    """
+    get user input
+    """
     selected_currency_symbol = request.form.get('currency_symbol')
+    currency_exchange_rate = currency_data[selected_currency_symbol][0]
+
+    """
+    recalculated cryptocurrency prices
+    """
+    for crypto in crypto_data:
+        crypto[3] = crypto[3] * currency_exchange_rate
+    
 
     return render_template('index.html',
                            crypto_data=crypto_data,
