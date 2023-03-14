@@ -22,10 +22,8 @@ def index():
     curr_data = rc.get_currencies_list()
     currency_data = rc.merge_data(exchage_rates, curr_data)
 
-    selected_currency_symbol = 'AED'
 
     selected_currency_symbol = request.form.get('currency_symbol')
-
 
     return render_template('index.html',
                            crypto_data=crypto_data,

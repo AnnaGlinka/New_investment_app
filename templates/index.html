@@ -235,7 +235,11 @@
   <div class="row">
     <div class="col-sm-12">
       <h2>CRYPTOCURRENCY PRICES</h2><br>
-          <h3>Displaying the latest cryptocurrency prices in {{currency_symbol}} </h3>
+        {% if currency_symbol == None %}
+           <h3>Displaying the latest cryptocurrency prices in USD </h3>
+        {% else %}
+            <h3>Displaying the latest cryptocurrency prices in {{currency_symbol}} </h3>
+        {% endif %}
              <br></br>
 
      <!-- table -->      
