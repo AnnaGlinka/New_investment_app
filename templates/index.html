@@ -324,18 +324,18 @@
     <h4>Choose a payment plan that works for you</h4>
   </div>
   <div class="row slideanim">
-       {% for elem in range(0,5) %}
+       {% for key, val in vat_rates_list.items() %}
             <div class="col-sm-4 col-xs-12">
               <div class="panel panel-default text-center">
                 <div class="panel-heading">
-                  <h1>Basic</h1>
+                  <h1>{{key}}</h1>
                 </div>
                 <div class="panel-body">
-                  <p><strong>20</strong> Lorem</p>
-                  <p><strong>15</strong> Ipsum</p>
-                  <p><strong>5</strong> Dolor</p>
-                  <p><strong>2</strong> Sit</p>
-                  <p><strong>Endless</strong> Amet</p>
+                  <p><strong>Country name: </strong>{{val['country_name']}}</p>
+                  <p><strong>Standar rate: </strong>{{val['standard_rate']}}</p>
+                  <p><strong>Reduced rates: </strong>{{val['reduced_rates']}}</p>
+                  <p><strong>Super reduced rates:</strong> {{val['super_reduced_rates']}}</p>
+                  <p><strong>Parking rates: </strong>{{val['parking_rates']}}</p>
                 </div>
               </div>      
             </div> 

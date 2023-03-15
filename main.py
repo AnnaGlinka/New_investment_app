@@ -44,7 +44,7 @@ def index():
     get eu VAT Rates
     """
     evr = EuVATRates()
-    vat_rates_list = evr.get_vat_retes
+    vat_rates_list = evr.get_vat_retes()
     
 
     return render_template('index.html',

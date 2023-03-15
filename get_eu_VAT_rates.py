@@ -17,10 +17,21 @@ class EuVATRates:
         try:
             response = session.get(url)
             EU_VAT_rates = json.loads(response.text)
+
+            for country, rate in EU_VAT_rates['rates'].items():
+                if rate['super_reduced_rates'] == []:
+                    rate['super_reduced_rates'] = 'Not applicable'
+                if rate['parking_rates'] == []:
+                    rate['parking_rates'] = 'Not applicable'
+                    
+                print(rate)
+
+
+            
             return EU_VAT_rates['rates']
 
         except (ConnectionError, Timeout, TooManyRedirects) as e:
             print(e)
 
 evr = EuVATRates()
-print(evr.get_vat_retes())
+evr.get_vat_retes()
