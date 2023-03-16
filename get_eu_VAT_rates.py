@@ -19,6 +19,8 @@ class EuVATRates:
             EU_VAT_rates = json.loads(response.text)
 
             for country, rate in EU_VAT_rates['rates'].items():
+                if rate['reduced_rates'] == []:
+                    rate['reduced_rates'] = 'Not applicable'
                 if rate['super_reduced_rates'] == []:
                     rate['super_reduced_rates'] = 'Not applicable'
                 if rate['parking_rates'] == []:
