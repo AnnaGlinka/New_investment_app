@@ -13,7 +13,7 @@ def index():
     get cryptocurrency part
     """
     cc = Cryptocurrency()
-    crypto_data = cc.get_n_top_currency(20)
+    crypto_data = cc.get_n_top_currency(10)
 
     """
     get currency exchange rates part

@@ -6,6 +6,8 @@ import json
 class GetAPIdata:
     
     def get_API_data(self, url:str, parameters:dict={}, headers:dict={}) -> dict:
+
+        #print(parameters)
         
         self.url = self
         self.parameters = parameters
