@@ -333,9 +333,31 @@
                 <div class="panel-body">
                   <p><strong>Country name: </strong>{{val['country_name']}}</p>
                   <p><strong>Standar rate: </strong>{{val['standard_rate']}}</p>
-                  <p><strong>Reduced rates: </strong>{{val['reduced_rates']}}</p>
-                  <p><strong>Super reduced rates:</strong> {{val['super_reduced_rates']}}</p>
-                  <p><strong>Parking rates: </strong>{{val['parking_rates']}}</p>
+                  <p><strong>Reduced rates: </strong>
+                      {% if val['reduced_rates'] != 'Not applicable' %}
+                          {% for elem in val['reduced_rates'] %}
+                          {{elem }}     
+                          {% endfor %}
+                      {% else %}
+                        {{val['reduced_rates']}}
+                      {% endif %}
+                  </p>
+                  <p><strong>Super reduced rates:</strong>
+                       {% if val['super_reduced_rates'] != 'Not applicable' %}
+                          {% for elem in val['super_reduced_rates'] %}
+                          {{elem}}
+                          {% endfor %}
+                      {% else %}
+                        {{val['super_reduced_rates']}}
+                      {% endif %}
+                  </p>
+                  <p><strong>Parking rates: </strong>
+                      {% if val['parking_rates'] != 'Not applicable' %}
+                          {{val['parking_rates'][0]}}
+                      {% else %}
+                        {{val['parking_rates']}}
+                      {% endif %}
+                  </p>
                 </div>
               </div>      
             </div> 
