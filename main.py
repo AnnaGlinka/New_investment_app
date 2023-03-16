@@ -6,6 +6,7 @@ from get_eu_VAT_rates import EuVATRates
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """
