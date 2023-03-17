@@ -10,13 +10,13 @@ class RealCurrency(GetAPIdata):
     def get_currencies_exchange_rates(self):
         url = "https://api.exchangerate.host/latest"
         parameters = {'base': 'USD'}
-        exchange_data = super().get_API_data(url, parameters)
+        exchange_data = self.get_API_data(url, parameters)
         return exchange_data['rates']     
 #**************************************************************************
     def get_currencies_list(self):
         url = "https://api.exchangerate.host/symbols"
         parameters = {'base': 'USD'}
-        currency_list = super().get_API_data(url, parameters)
+        currency_list = self.get_API_data(url, parameters)
         return currency_list['symbols']
 
 #************************************************************************
@@ -46,10 +46,10 @@ class RealCurrency(GetAPIdata):
         return  cleaned_sorted_curr_data
 
 
-rc = RealCurrency()
-exchage_rates = rc.get_currencies_exchange_rates()
+# rc = RealCurrency()
+# exchage_rates = rc.get_currencies_exchange_rates()
 # curr_data = rc.get_currencies_list()
-print(exchage_rates)
+# print(exchage_rates)
 # print(curr_data)
 # merged_data = rc.merge_data(exchage_rates, curr_data)
 # print(merged_data)

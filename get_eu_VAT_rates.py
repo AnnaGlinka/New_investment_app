@@ -10,7 +10,7 @@ class EuVATRates(GetAPIdata):
 
     def get_vat_retes(self):
         url = "https://api.exchangerate.host/vat_rates"
-        EU_VAT_rates = super().get_API_data(url)
+        EU_VAT_rates = self.get_API_data(url)
     
         for country, rate in EU_VAT_rates['rates'].items():
             if rate['reduced_rates'] == []:
@@ -23,6 +23,6 @@ class EuVATRates(GetAPIdata):
         return EU_VAT_rates['rates']
 
 
-evr = EuVATRates()
-vat = evr.get_vat_retes()
-print(vat)
+# evr = EuVATRates()
+# vat = evr.get_vat_retes()
+# print(vat)

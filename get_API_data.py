@@ -17,6 +17,7 @@ class GetAPIdata:
         session.headers.update(headers)
         try:
             response = session.get(url, params=parameters)
+            print("Response API statua code", response.status_code)
             data = json.loads(response.text)
             return data
     

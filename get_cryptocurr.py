@@ -15,18 +15,17 @@ class Cryptocurrency(GetAPIdata):
             'X-CMC_PRO_API_KEY': API_KEY,
         }
         
-        data = super().get_API_data(url, parameters, headers)
+        data = self.get_API_data(url, parameters, headers)
         coin_information = []
         for coin in data['data']:
             coin_information.append([coin['name'], coin['symbol'], coin['slug'], coin['quote']['USD']['price']])
           
-     
         
         return coin_information
     
       
     
-# cc = Cryptocurrency()
-# data = cc.get_n_top_currency(10)
-# print(data)
+cc = Cryptocurrency()
+data = cc.get_n_top_currency(10)
+print(data)
 
