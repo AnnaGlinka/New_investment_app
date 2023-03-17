@@ -2,42 +2,24 @@
 #stopped working
 #https://exchangerate.host/#/#docs
 
-from requests import Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
+from get_API_data import GetAPIdata
 
 
-class RealCurrency:
+class RealCurrency(GetAPIdata):
 
     def get_currencies_exchange_rates(self):
         url = "https://api.exchangerate.host/latest"
-        params_arg = {'base': 'USD'}
-
-        session = Session()
-
-        try:
-            response = session.get(url, params=params_arg)
-            exchange_data = json.loads(response.text)
-            #print(exchange_data['rates'])
-            return exchange_data['rates']
-
-        except (ConnectionError, Timeout, TooManyRedirects) as e:
-            print(e)
-
+        parameters = {'base': 'USD'}
+        exchange_data = super().get_API_data(url, parameters)
+        return exchange_data['rates']     
+#**************************************************************************
     def get_currencies_list(self):
         url = "https://api.exchangerate.host/symbols"
+        parameters = {'base': 'USD'}
+        currency_list = super().get_API_data(url, parameters)
+        return currency_list['symbols']
 
-        session = Session()
-  
-        try:
-            response = session.get(url)
-            currency_list = json.loads(response.text)
-            #print(currency_list['symbols'])
-            return currency_list['symbols']
-           
-
-        except (ConnectionError, Timeout, TooManyRedirects) as e:
-            print(e)
+#************************************************************************
 
     def combine_dict(self, d1, d2):
         return {
@@ -66,8 +48,8 @@ class RealCurrency:
 
 rc = RealCurrency()
 exchage_rates = rc.get_currencies_exchange_rates()
-curr_data = rc.get_currencies_list()
-#print(exchage_rates)
-#print(curr_data)
-merged_data = rc.merge_data(exchage_rates, curr_data)
-print(merged_data)
+# curr_data = rc.get_currencies_list()
+print(exchage_rates)
+# print(curr_data)
+# merged_data = rc.merge_data(exchage_rates, curr_data)
+# print(merged_data)

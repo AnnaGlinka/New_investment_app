@@ -2,38 +2,27 @@
 #stopped working
 #https://exchangerate.host/#/#docs
 
-from requests import Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
+
+from get_API_data import GetAPIdata
 
 
-class EuVATRates:
+class EuVATRates(GetAPIdata):
 
     def get_vat_retes(self):
         url = "https://api.exchangerate.host/vat_rates"
+        EU_VAT_rates = super().get_API_data(url)
     
-        session = Session()
-
-        try:
-            response = session.get(url)
-            EU_VAT_rates = json.loads(response.text)
-
-            for country, rate in EU_VAT_rates['rates'].items():
-                if rate['reduced_rates'] == []:
-                    rate['reduced_rates'] = 'Not applicable'
-                if rate['super_reduced_rates'] == []:
-                    rate['super_reduced_rates'] = 'Not applicable'
-                if rate['parking_rates'] == []:
-                    rate['parking_rates'] = 'Not applicable'
-                    
-                print(rate)
-
-
+        for country, rate in EU_VAT_rates['rates'].items():
+            if rate['reduced_rates'] == []:
+                rate['reduced_rates'] = 'Not applicable'
+            if rate['super_reduced_rates'] == []:
+                rate['super_reduced_rates'] = 'Not applicable'
+            if rate['parking_rates'] == []:
+                rate['parking_rates'] = 'Not applicable'
             
-            return EU_VAT_rates['rates']
+        return EU_VAT_rates['rates']
 
-        except (ConnectionError, Timeout, TooManyRedirects) as e:
-            print(e)
 
 evr = EuVATRates()
-evr.get_vat_retes()
+vat = evr.get_vat_retes()
+print(vat)

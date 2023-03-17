@@ -1,4 +1,3 @@
-
 import os
 from get_API_data import GetAPIdata
 
