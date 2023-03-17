@@ -3,14 +3,16 @@
 #https://exchangerate.host/#/#docs
 
 
-from get_API_data import GetAPIdata
+from get_API_data import APIdataGetter
 
 
-class EuVATRates(GetAPIdata):
+class EuVATRates:
+
+    _APIdataG = APIdataGetter()
 
     def get_vat_retes(self):
         url = "https://api.exchangerate.host/vat_rates"
-        EU_VAT_rates = self.get_API_data(url)
+        EU_VAT_rates = self._APIdataG.get_API_data(url)
     
         for country, rate in EU_VAT_rates['rates'].items():
             if rate['reduced_rates'] == []:

@@ -3,7 +3,7 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 
 
-class GetAPIdata:
+class APIdataGetter:
     
     def get_API_data(self, url:str, parameters:dict={}, headers:dict={}) -> dict:
 

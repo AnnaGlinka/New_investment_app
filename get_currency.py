@@ -2,21 +2,23 @@
 #stopped working
 #https://exchangerate.host/#/#docs
 
-from get_API_data import GetAPIdata
+from get_API_data import APIdataGetter
 
 
-class RealCurrency(GetAPIdata):
+class RealCurrency:
+
+    _APIdataG = APIdataGetter()
 
     def get_currencies_exchange_rates(self):
         url = "https://api.exchangerate.host/latest"
         parameters = {'base': 'USD'}
-        exchange_data = self.get_API_data(url, parameters)
+        exchange_data = self._APIdataG.get_API_data(url, parameters)
         return exchange_data['rates']     
 #**************************************************************************
     def get_currencies_list(self):
         url = "https://api.exchangerate.host/symbols"
         parameters = {'base': 'USD'}
-        currency_list = self.get_API_data(url, parameters)
+        currency_list = self. _APIdataG.get_API_data(url, parameters)
         return currency_list['symbols']
 
 #************************************************************************
