@@ -21,9 +21,14 @@ class RealCurrency:
 #**************************************************************************
     def get_currencies_list(self):
         url = "https://api.exchangerate.host/symbols"
+        #url = "https://api.exchangerate.host/sym" #bad endpoint url for testing
         parameters = {'base': 'USD'}
         currency_list = self. _APIdataG.get_API_data(url, parameters)
-        return currency_list['symbols']
+        try:
+            return currency_list['symbols']
+        except KeyError:
+            print(f"Data not available! \nEndpoint: {url}")
+      
 
 #************************************************************************
 
@@ -41,7 +46,7 @@ class RealCurrency:
         and names
         """
 
-        if exchage_rates is None or curr_data is None:
+        if exchange_rates == None or curr_data == None:
             return None
         
         combined_data = self.combine_dict(exchange_rates, curr_data)
@@ -60,7 +65,7 @@ class RealCurrency:
 rc = RealCurrency()
 exchage_rates = rc.get_currencies_exchange_rates()
 curr_data = rc.get_currencies_list()
-print(exchage_rates)
-print(curr_data)
+# print(exchage_rates)
+# print(curr_data)
 merged_data = rc.merge_data(exchage_rates, curr_data)
 print(merged_data)
