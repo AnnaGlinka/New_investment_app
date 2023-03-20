@@ -27,8 +27,9 @@ def index():
     """
     get user input
     """
-    selected_currency_symbol = request.form.get('currency_symbol')
     currency_exchange_rate = 1
+    selected_currency_symbol = request.form.get('currency_symbol')
+    
     
     if selected_currency_symbol == None:
         currency_exchange_rate = 1

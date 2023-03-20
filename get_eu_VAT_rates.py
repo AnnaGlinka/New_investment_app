@@ -1,6 +1,7 @@
 #https://rapidapi.com/citeamaccount/api/currencyscoop
 #stopped working
 #https://exchangerate.host/#/#docs
+#obsluga bledow, testy, dziedziczenie html
 
 
 from get_API_data import APIdataGetter

@@ -32,6 +32,13 @@
     font-weight: 400;
     margin-bottom: 30px;
   }  
+   h5 {
+    font-size: 25px;
+    line-height: 1.375em;
+    color: red;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }  
   .jumbotron {
     background-color: #f4511e;
     color: #fff;
@@ -269,10 +276,15 @@
         <div class="input-group">
             <span class="input-group-addon">Please select</span>
                 <select name="currency_symbol" class="selectpicker form-control">
-                  {% for key, value in currency_data.items() %}
-                
-                  <option value="{{key}}">{{key + " " + value[1]['description']}}</option>
-                  {% endfor %}
+                   {% if currency_data == None %} 
+                    <option value="{{key}}"><h5>No data to select</h5></option>
+    
+                   {% else %} 
+                     {% for key, value in currency_data.items() %}
+                        <option value="{{key}}">{{key + " " + value[1]['description']}}</option>
+                     {% endfor %}
+                   {% endif %}
+                 
                 </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
@@ -299,14 +311,21 @@
                 </tr>
               </thead>
               <tbody>
-                  {% for key, value in currency_data.items() %}
-                <tr>
-                  <td>{{key}}</td>
-                  <td>{{value[1]['description']}}</td>
-                  <td><b>$</b>{{value[0]}}</td>
+                  {% if currency_data == None %}
+                  <br>
+                    <h5><center>No data available!</center></h5>
+                  
+                  {% else %}
+                     {% for key, value in currency_data.items() %}
+                        <tr>
+                          <td>{{key}}</td>
+                          <td>{{value[1]['description']}}</td>
+                          <td><b>$</b>{{value[0]}}</td>
+                        
+                        </tr>
+                      {% endfor %}
+                  {% endif %}
                 
-                </tr>
-                  {% endfor %}
               </tbody>
             </table>
              
