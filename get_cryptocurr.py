@@ -13,7 +13,7 @@ class Cryptocurrency:
         url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
         headers = {
             'Accepts': 'application/json',
-            'X-CMC_PRO_API_KEY': "kkds",
+            'X-CMC_PRO_API_KEY': API_KEY,
         }
 
         data = self._APIdataG.get_API_data(url, parameters, headers)
