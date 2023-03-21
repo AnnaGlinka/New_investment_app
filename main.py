@@ -39,8 +39,9 @@ def index():
     """
     recalculated cryptocurrency prices
     """
-    for crypto in crypto_data:
-        crypto[3] = crypto[3] * currency_exchange_rate
+    if crypto_data != None:
+        for crypto in crypto_data:
+            crypto[3] = crypto[3] * currency_exchange_rate
 
     """
     get eu VAT Rates
