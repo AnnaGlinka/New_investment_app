@@ -62,10 +62,10 @@ class RealCurrency:
         return  cleaned_sorted_curr_data
 
 
-rc = RealCurrency()
-exchage_rates = rc.get_currencies_exchange_rates()
-curr_data = rc.get_currencies_list()
+# rc = RealCurrency()
+# exchage_rates = rc.get_currencies_exchange_rates()
+# curr_data = rc.get_currencies_list()
 # print(exchage_rates)
 # print(curr_data)
-merged_data = rc.merge_data(exchage_rates, curr_data)
-print(merged_data)
+# merged_data = rc.merge_data(exchage_rates, curr_data)
+# print(merged_data)
