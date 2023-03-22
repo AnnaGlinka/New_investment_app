@@ -66,6 +66,8 @@ class RealCurrency:
 # exchage_rates = rc.get_currencies_exchange_rates()
 # curr_data = rc.get_currencies_list()
 # print(exchage_rates)
+# print("")
 # print(curr_data)
+# print("")
 # merged_data = rc.merge_data(exchage_rates, curr_data)
 # print(merged_data)

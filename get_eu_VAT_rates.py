@@ -31,6 +31,6 @@ class EuVATRates:
             print(f"Data not available! \nEndpoint: {url}")
 
 
-evr = EuVATRates()
-vat = evr.get_vat_retes()
-print(vat)
+# evr = EuVATRates()
+# vat = evr.get_vat_retes()
+# print(type(vat))
