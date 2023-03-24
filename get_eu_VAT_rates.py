@@ -15,6 +15,7 @@ class EuVATRates:
         url = "https://api.exchangerate.host/vat_rates"
         #url = "https://api.exchangerate.host/vat_ra" #error in endpoint
         EU_VAT_rates = self._APIdataG.get_API_data(url)
+        print(EU_VAT_rates)
 
         try:
             for country, rate in EU_VAT_rates['rates'].items():
@@ -27,10 +28,10 @@ class EuVATRates:
                 
             return EU_VAT_rates['rates']
             
-        except TypeError:
+        except AttributeError: #TypeError
             print(f"Data not available! \nEndpoint: {url}")
 
 
-# evr = EuVATRates()
-# vat = evr.get_vat_retes()
-# print(type(vat))
+evr = EuVATRates()
+vat = evr.get_vat_retes()
+print(type(vat))
